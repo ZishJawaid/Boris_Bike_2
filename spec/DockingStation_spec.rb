@@ -17,16 +17,14 @@ describe DockingStation do
       expect { station.release_bike }.to raise_error ("No bikes available")
     end
 
-
   end
 
-
   describe '#dock' do
-  
+
     it 'raises an error if docking station is full' do
 
       station = DockingStation.new
-      20.times { station.dock(Bike.new) }
+      DockingStation::DEFAULT_CAPACITY.times { station.dock(Bike.new) }
       expect { station.dock(Bike.new) }.to raise_error ("Docking station full")
 
     end
@@ -37,8 +35,6 @@ describe DockingStation do
   it 'Expects DockingStation to respond to release_bike' do
     expect(DockingStation.new).to respond_to(:release_bike)
   end
-
-
 
   it 'responds to dock method with 1 argument' do
     station = DockingStation.new
@@ -64,7 +60,5 @@ describe DockingStation do
     expect(station.bike_array).to eq bike
 
   end
-
-
 
 end

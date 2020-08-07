@@ -4,6 +4,8 @@ class DockingStation
 
 attr_reader :bike_array
 
+DEFAULT_CAPACITY = 20
+
   def initialize
     @bike_array = []
   end
@@ -13,7 +15,7 @@ attr_reader :bike_array
     @bike_array.pop
   end
 
-  def dock(bike)        
+  def dock(bike)
     raise "Docking station full" if full?   
     @bike_array << bike
 
@@ -22,7 +24,7 @@ attr_reader :bike_array
   private
 
   def full?
-    @bike_array.length >= 20  
+    @bike_array.length >= DEFAULT_CAPACITY
   end
 
   def empty?
